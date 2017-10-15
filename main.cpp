@@ -34,12 +34,21 @@ SOFTWARE.
 using namespace std;
 
 int main(void){
-  Knapsack k1(4, 30);
+  Knapsack k1(7, 23);
+  //Knapsack k1(4, 30);
 
-  k1.addItemtoVector(new Item(13, 23));
-  k1.addItemtoVector(new Item(23, 29));
-  k1.addItemtoVector(new Item(17, 27));
-  k1.addItemtoVector(new Item(19, 25));
+  k1.addItemtoVector(new Item(1, 1));
+  k1.addItemtoVector(new Item(2, 6));
+  k1.addItemtoVector(new Item(5, 18));
+  k1.addItemtoVector(new Item(6, 22));
+  k1.addItemtoVector(new Item(7, 28));
+  k1.addItemtoVector(new Item(9, 40));
+  k1.addItemtoVector(new Item(11, 60));
+
+  //k1.addItemtoVector(new Item(13, 23));
+  //k1.addItemtoVector(new Item(23, 29));
+  //k1.addItemtoVector(new Item(17, 27));
+  //k1.addItemtoVector(new Item(19, 25));
 
   sort(k1.itens_vector.begin(), k1.itens_vector.end(), [](const Item* lhs, const Item* rhs){ return lhs->weight < rhs->weight; });
 
