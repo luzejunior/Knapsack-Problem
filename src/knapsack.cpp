@@ -95,6 +95,6 @@ void Knapsack::executeAlgorithm(){
   createMatrix();
   checkWhatItemsAreInBag();
   int total_weight = printItens(0);
-  cout << "The total weight is: " << total_weight << endl;
+  cout << "The total weight is: " << total_weight << " with a total of " << this->itensIndex.size() << " items"<< endl;
   cout << "The total value is " << (*auxMatrix)[this->itens_number][this->knapsack_max_weight] << endl;
 }
