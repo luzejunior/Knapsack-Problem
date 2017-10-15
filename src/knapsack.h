@@ -25,11 +25,12 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 */
+#ifndef KNAPSACK_H
+#define KNAPSACK_H
 
 #include <iostream>
 #include <vector>
-
-class Item;
+#include "item.h"
 
 using namespace std;
 
@@ -41,3 +42,5 @@ public:
   Knapsack(int, int);
   void addItemtoVector(Item*);
 };
+
+#endif

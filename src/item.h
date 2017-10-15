@@ -25,6 +25,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 */
+#ifndef ITEM_H
+#define ITEM_H
 
 #include <iostream>
 
@@ -37,3 +39,5 @@ public:
   int value;
   Item(int, int);
 };
+
+#endif
