@@ -56,7 +56,10 @@ void Knapsack::createMatrix(){
       if(value > 0){
         int nextIndex = j - this->itens_vector[i-1]->weight;
         value += (*auxMatrix)[i-1][nextIndex];
-        (*auxMatrix)[i][j] = value;
+        if(value > (*auxMatrix)[i-1][j]){
+          (*auxMatrix)[i][j] = value;
+        }
+        else (*auxMatrix)[i][j] = (*auxMatrix)[i-1][j];
       }
       else (*auxMatrix)[i][j] = (*auxMatrix)[i-1][j];
     }
