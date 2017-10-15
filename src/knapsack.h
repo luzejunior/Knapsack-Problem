@@ -25,12 +25,14 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 */
+
 #ifndef KNAPSACK_H
 #define KNAPSACK_H
 
 #include <iostream>
 #include <vector>
 #include "item.h"
+#include "matrix.h"
 
 using namespace std;
 
@@ -38,9 +40,17 @@ class Knapsack{
 public:
   int itens_number;
   int knapsack_max_weight;
+  vector<vector<int>> *auxMatrix;
   vector<Item*> itens_vector;
+  vector<int> itensIndex;
   Knapsack(int, int);
+  void initializeMatrix(Matrix*);
+  void checkWhatItemsAreInBag();
+  void printItens();
+  void createMatrix();
+  int checkWeight(int, Item*);
   void addItemtoVector(Item*);
+  void executeAlgorithm();
 };
 
 #endif
