@@ -33,10 +33,9 @@ SOFTWARE.
 using namespace std;
 
 class Knapsack{
-private:
+public:
   int itens_number;
   int knapsack_max_weight;
-public:
   vector<Item*> itens_vector;
   Knapsack(int, int);
   void addItemtoVector(Item*);
