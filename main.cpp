@@ -34,5 +34,14 @@ using namespace std;
 int main(void){
   Knapsack k1(4, 30);
 
+  k1.addItemtoVector(new Item(13, 23));
+  k1.addItemtoVector(new Item(23, 29));
+  k1.addItemtoVector(new Item(17, 27));
+  k1.addItemtoVector(new Item(19, 25));
+
+  for(vector<Item*>::iterator it = k1.itens_vector.begin(); it != k1.itens_vector.end(); it++){
+    cout << "This knapsack iten has weight: " << (*it)->weight << " and value: " << (*it)->value << endl;
+  }
+
   return 0;
 }

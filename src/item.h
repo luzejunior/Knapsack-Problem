@@ -27,17 +27,13 @@ SOFTWARE.
 */
 
 #include <iostream>
-#include <vector>
-#include "item.h"
 
 using namespace std;
 
-class Knapsack{
+class Item{
 private:
-  int itens_number;
-  int knapsack_max_weight;
 public:
-  vector<Item*> itens_vector;
-  Knapsack(int, int);
-  void addItemtoVector(Item*);
+  int weight;
+  int value;
+  Item(int, int);
 };

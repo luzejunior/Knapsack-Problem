@@ -32,3 +32,7 @@ Knapsack::Knapsack(int itens_number, int knapsack_max_weight){
   this->itens_number = itens_number;
   this->knapsack_max_weight = knapsack_max_weight;
 }
+
+void Knapsack::addItemtoVector(Item* item){
+  this->itens_vector.push_back(item);
+}
