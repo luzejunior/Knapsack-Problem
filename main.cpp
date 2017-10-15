@@ -28,33 +28,36 @@ SOFTWARE.
 
 #include <iostream>
 #include <algorithm>
+#include <fstream>
+#include <sstream>
 #include "src/knapsack.h"
 #include "src/matrix.h"
 
 using namespace std;
 
 int main(void){
-  Knapsack k1(7, 23);
-  //Knapsack k1(4, 30);
+  int knapsack_max_weight, total_itens;
+  string line;
 
-  k1.addItemtoVector(new Item(1, 1));
-  k1.addItemtoVector(new Item(2, 6));
-  k1.addItemtoVector(new Item(5, 18));
-  k1.addItemtoVector(new Item(6, 22));
-  k1.addItemtoVector(new Item(7, 28));
-  k1.addItemtoVector(new Item(9, 40));
-  k1.addItemtoVector(new Item(11, 60));
+  ifstream file("samples/mochila02.txt.txt");
+  getline(file, line);
+  stringstream ss(line);
+  ss >> total_itens >> knapsack_max_weight;
 
-  //k1.addItemtoVector(new Item(13, 23));
-  //k1.addItemtoVector(new Item(23, 29));
-  //k1.addItemtoVector(new Item(17, 27));
-  //k1.addItemtoVector(new Item(19, 25));
+  Knapsack k1(total_itens, knapsack_max_weight);
 
-  sort(k1.itens_vector.begin(), k1.itens_vector.end(), [](const Item* lhs, const Item* rhs){ return lhs->weight < rhs->weight; });
+  while(getline(file, line)){
+    int weight, value;
+    stringstream ss1(line);
+    while(ss1 >> weight >> value){
+      k1.addItemtoVector(new Item(weight, value));
+    }
+  }
 
-  // for(vector<Item*>::iterator it = k1.itens_vector.begin(); it != k1.itens_vector.end(); it++){
-  //   cout << "This knapsack item has weight: " << (*it)->weight << " and value: " << (*it)->value << endl;
-  // }
+  sort(k1.itens_vector.begin(), k1.itens_vector.end(), [](const Item* lhs, const Item* rhs){ return lhs->value < rhs->value; });
+  for(vector<Item*>::iterator it = k1.itens_vector.begin(); it != k1.itens_vector.end(); it++){
+    cout << "This knapsack item has weight: " << (*it)->weight << " and value: " << (*it)->value << endl;
+  }
 
   Matrix m1(k1.itens_number, k1.knapsack_max_weight);
 
@@ -62,11 +65,5 @@ int main(void){
   k1.executeAlgorithm();
 
   m1.printMatrix();
-  //Matrix m1(k1.itens_number, k1.knapsack_max_weight, &k1);
-
-  //m1.executeAlgorithm();
-
-
-
   return 0;
 }
