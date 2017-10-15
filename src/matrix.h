@@ -30,11 +30,14 @@ SOFTWARE.
 #include <vector>
 #include "item.h"
 
+class Knapsack;
+
 using namespace std;
 
 class Matrix{
 public:
   vector<vector<int>> *matrix;
-  Matrix(int, int);
+  Knapsack *knapsack;
+  Matrix(int, int, Knapsack*);
   int checkWeight(int, Item*);
 };

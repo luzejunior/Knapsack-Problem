@@ -28,8 +28,9 @@ SOFTWARE.
 
 #include "matrix.h"
 
-Matrix::Matrix(int row, int column){
+Matrix::Matrix(int row, int column, Knapsack* knapsack){
   this->matrix = new vector<vector<int>>(row+1, vector<int>(column+1));
+  this->knapsack = knapsack;
 }
 
 int Matrix::checkWeight(int knapsack_weight, Item* item){

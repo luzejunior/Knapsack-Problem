@@ -47,7 +47,7 @@ int main(void){
     cout << "This knapsack iten has weight: " << (*it)->weight << " and value: " << (*it)->value << endl;
   }
 
-  Matrix m1(k1.itens_number, k1.knapsack_max_weight);
+  Matrix m1(k1.itens_number, k1.knapsack_max_weight, &k1);
 
   vector<vector<int>> *auxMatrix = m1.matrix;
   for(int i=0; i<k1.knapsack_max_weight; i++){
