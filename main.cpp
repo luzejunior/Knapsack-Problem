@@ -53,7 +53,7 @@ int main(void){
   sort(k1.itens_vector.begin(), k1.itens_vector.end(), [](const Item* lhs, const Item* rhs){ return lhs->weight < rhs->weight; });
 
   for(vector<Item*>::iterator it = k1.itens_vector.begin(); it != k1.itens_vector.end(); it++){
-    cout << "This knapsack iten has weight: " << (*it)->weight << " and value: " << (*it)->value << endl;
+    cout << "This knapsack item has weight: " << (*it)->weight << " and value: " << (*it)->value << endl;
   }
 
   Matrix m1(k1.itens_number, k1.knapsack_max_weight, &k1);
