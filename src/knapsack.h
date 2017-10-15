@@ -28,7 +28,8 @@ SOFTWARE.
 
 #include <iostream>
 #include <vector>
-#include "item.h"
+
+class Item;
 
 using namespace std;
 
