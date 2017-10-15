@@ -26,11 +26,13 @@ SOFTWARE.
 
 */
 
+#ifndef MATRIX_H
+#define MATRIX_H
+
 #include <iostream>
 #include <vector>
 #include "item.h"
-
-class Knapsack;
+#include "knapsack.h"
 
 using namespace std;
 
@@ -40,4 +42,8 @@ public:
   Knapsack *knapsack;
   Matrix(int, int, Knapsack*);
   int checkWeight(int, Item*);
+  void printMatrix();
+  void executeAlgorithm();
 };
+
+#endif

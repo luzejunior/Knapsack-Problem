@@ -39,3 +39,27 @@ int Matrix::checkWeight(int knapsack_weight, Item* item){
   }
   else return -1;
 }
+
+void Matrix::printMatrix(){
+  for(int i=0; i<knapsack->itens_number+1; i++){
+    for(int j=0; j<knapsack->knapsack_max_weight+1; j++){
+      cout << "[" << (*matrix)[i][j] << "]";
+    }
+    cout << endl;
+  }
+}
+
+void Matrix::executeAlgorithm(){
+  for(int j=1; j<knapsack->itens_number+1; j++){
+    for(int i=1; i<knapsack->knapsack_max_weight+1; i++){
+      int value = checkWeight(i, knapsack->itens_vector[j-1]);
+      if(value > 0){
+        int nextIndex = i - j;
+        value += (*matrix)[j-1][nextIndex];
+        (*matrix)[j][i] = value;
+      }
+      else (*matrix)[j][i] = (*matrix)[j-1][i];
+    }
+  }
+  printMatrix();
+}

@@ -49,29 +49,7 @@ int main(void){
 
   Matrix m1(k1.itens_number, k1.knapsack_max_weight, &k1);
 
-  vector<vector<int>> *auxMatrix = m1.matrix;
-  for(int i=0; i<k1.knapsack_max_weight; i++){
-    (*auxMatrix)[0][i] = 0;
-  }
-
-  for(int j=1; j<k1.itens_number+1; j++){
-    for(int i=1; i<k1.knapsack_max_weight+1; i++){
-      int value = m1.checkWeight(i, k1.itens_vector[j-1]);
-      if(value > 0){
-        int nextIndex = i - j;
-        value += (*auxMatrix)[j-1][nextIndex];
-        (*auxMatrix)[j][i] = value;
-      }
-      else (*auxMatrix)[j][i] = (*auxMatrix)[j-1][i];
-    }
-  }
-
-  for(int i=0; i<k1.itens_number+1; i++){
-    for(int j=0; j<k1.knapsack_max_weight+1; j++){
-      cout << "[" << (*auxMatrix)[i][j] << "]";
-    }
-    cout << endl;
-  }
+  m1.executeAlgorithm();
 
 
 
