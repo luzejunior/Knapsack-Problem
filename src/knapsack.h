@@ -44,12 +44,12 @@ public:
   vector<Item*> itens_vector;
   vector<int> itensIndex;
   Knapsack(int, int);
+  void addItemtoVector(Item*);
   void initializeMatrix(Matrix*);
+  int checkWeight(int, Item*);
+  void createMatrix();
   void checkWhatItemsAreInBag();
   void printItens();
-  void createMatrix();
-  int checkWeight(int, Item*);
-  void addItemtoVector(Item*);
   void executeAlgorithm();
 };
 

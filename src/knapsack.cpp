@@ -33,6 +33,10 @@ Knapsack::Knapsack(int itens_number, int knapsack_max_weight){
   this->knapsack_max_weight = knapsack_max_weight;
 }
 
+void Knapsack::addItemtoVector(Item* item){
+  this->itens_vector.push_back(item);
+}
+
 void Knapsack::initializeMatrix(Matrix* matrix){
   this->auxMatrix = (*matrix).matrix;
 }
@@ -42,6 +46,21 @@ int Knapsack::checkWeight(int knapsack_weight, Item* item){
     return item->value;
   }
   else return -1;
+}
+
+void Knapsack::createMatrix(){
+  //vector<vector<int>> *auxMatrix = (*matrix).matrix;
+  for(int i=1; i<this->itens_number+1; i++){
+    for(int j=1; j<this->knapsack_max_weight+1; j++){
+      int value = checkWeight(j, this->itens_vector[i-1]);
+      if(value > 0){
+        int nextIndex = j - this->itens_vector[i-1]->weight;
+        value += (*auxMatrix)[i-1][nextIndex];
+        (*auxMatrix)[i][j] = value;
+      }
+      else (*auxMatrix)[i][j] = (*auxMatrix)[i-1][j];
+    }
+  }
 }
 
 void Knapsack::checkWhatItemsAreInBag(){
@@ -64,25 +83,6 @@ void Knapsack::printItens(){
     cout << "The robber will take the item with weight: " << this->itens_vector[*it-1]->weight
     << " and value: " << this->itens_vector[*it-1]->value << endl;
   }
-}
-
-void Knapsack::createMatrix(){
-  //vector<vector<int>> *auxMatrix = (*matrix).matrix;
-  for(int i=1; i<this->itens_number+1; i++){
-    for(int j=1; j<this->knapsack_max_weight+1; j++){
-      int value = checkWeight(j, this->itens_vector[i-1]);
-      if(value > 0){
-        int nextIndex = j - this->itens_vector[i-1]->weight;
-        value += (*auxMatrix)[i-1][nextIndex];
-        (*auxMatrix)[i][j] = value;
-      }
-      else (*auxMatrix)[i][j] = (*auxMatrix)[i-1][j];
-    }
-  }
-}
-
-void Knapsack::addItemtoVector(Item* item){
-  this->itens_vector.push_back(item);
 }
 
 void Knapsack::executeAlgorithm(){
