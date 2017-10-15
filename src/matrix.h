@@ -40,9 +40,13 @@ class Matrix{
 public:
   vector<vector<int>> *matrix;
   Knapsack *knapsack;
+  vector<int> itensIndex;
   Matrix(int, int, Knapsack*);
   int checkWeight(int, Item*);
   void printMatrix();
+  void createMatrix();
+  void checkWhatItemsAreInBag();
+  void printItens();
   void executeAlgorithm();
 };
 

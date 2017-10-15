@@ -49,17 +49,44 @@ void Matrix::printMatrix(){
   }
 }
 
-void Matrix::executeAlgorithm(){
-  for(int j=1; j<knapsack->itens_number+1; j++){
-    for(int i=1; i<knapsack->knapsack_max_weight+1; i++){
-      int value = checkWeight(i, knapsack->itens_vector[j-1]);
+void Matrix::createMatrix(){
+  for(int i=1; i<(*matrix).size(); i++){
+    for(int j=1; j<(*matrix)[0].size(); j++){
+      int value = checkWeight(j, knapsack->itens_vector[i-1]);
       if(value > 0){
-        int nextIndex = i - j;
-        value += (*matrix)[j-1][nextIndex];
-        (*matrix)[j][i] = value;
+        int nextIndex = j - knapsack->itens_vector[i-1]->weight;
+        value += (*matrix)[i-1][nextIndex];
+        (*matrix)[i][j] = value;
       }
-      else (*matrix)[j][i] = (*matrix)[j-1][i];
+      else (*matrix)[i][j] = (*matrix)[i-1][j];
     }
   }
+}
+
+void Matrix::checkWhatItemsAreInBag(){
+  int row = (*matrix).size()-1;
+  int column = (*matrix)[0].size()-1;
+  //cout << "This vector has " << row << " rows and " << column << " columns." << endl;
+  while(row != 0){
+    if((*matrix)[row][column] != (*matrix)[row-1][column]){
+      column = column - knapsack->itens_vector[row-1]->weight;
+      this->itensIndex.push_back(row);
+      //cout << "The new column will be: " << column << endl;
+    }
+    row--;
+  }
+}
+
+void Matrix::printItens(){
+  for (vector<int>::iterator it = itensIndex.begin(); it != itensIndex.end(); it++){
+    cout << "The robber will take the item with weight: " << knapsack->itens_vector[*it-1]->weight
+    << " and value: " << knapsack->itens_vector[*it-1]->value << endl;
+  }
+}
+
+void Matrix::executeAlgorithm(){
+  createMatrix();
   printMatrix();
+  checkWhatItemsAreInBag();
+  printItens();
 }
