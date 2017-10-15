@@ -49,7 +49,7 @@ public:
   int checkWeight(int, Item*);
   void createMatrix();
   void checkWhatItemsAreInBag();
-  void printItens();
+  int printItens(int);
   void executeAlgorithm();
 };
 

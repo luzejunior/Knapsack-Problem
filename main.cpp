@@ -39,7 +39,7 @@ int main(void){
   int knapsack_max_weight, total_itens;
   string line;
 
-  ifstream file("samples/mochila02.txt.txt");
+  ifstream file("samples/mochila1000.txt");
   getline(file, line);
   stringstream ss(line);
   ss >> total_itens >> knapsack_max_weight;
@@ -54,16 +54,16 @@ int main(void){
     }
   }
 
-  sort(k1.itens_vector.begin(), k1.itens_vector.end(), [](const Item* lhs, const Item* rhs){ return lhs->value < rhs->value; });
-  for(vector<Item*>::iterator it = k1.itens_vector.begin(); it != k1.itens_vector.end(); it++){
-    cout << "This knapsack item has weight: " << (*it)->weight << " and value: " << (*it)->value << endl;
-  }
+  sort(k1.itens_vector.begin(), k1.itens_vector.end(), [](const Item* lhs, const Item* rhs){ return lhs->weight < rhs->weight; });
+  // for(vector<Item*>::iterator it = k1.itens_vector.begin(); it != k1.itens_vector.end(); it++){
+  //   cout << "This knapsack item has weight: " << (*it)->weight << " and value: " << (*it)->value << endl;
+  // }
 
   Matrix m1(k1.itens_number, k1.knapsack_max_weight);
 
   k1.initializeMatrix(&m1);
   k1.executeAlgorithm();
 
-  m1.printMatrix();
+  //m1.printMatrix();
   return 0;
 }
